@@ -36,10 +36,19 @@ export default function Lista({navigation}) {
 
                             </View>
                             <View style={styles.caixaInfo}>
-                                <View style={styles.infos}>
-                                    <Text>Idade: 999</Text>
-                                    <Text>Sexo: Macho</Text>
-                                    <Text>Local: llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch e</Text>
+                                <View style={styles.grade}>
+                                    <View style={styles.infos}>
+                                        <Text style={{color: 'blue'}}>Idade: </Text>
+                                        <Text style={{color: 'blue'}}>Sexo: </Text>
+                                        <Text style={{color: 'blue'}}>Local: </Text>
+                                    </View>
+                                    <View style={{
+                                        //backgroundColor: 'orange',
+                                    }}>
+                                        <Text>18</Text>
+                                        <Text>Macho </Text>
+                                        <Text>Baeta - Sao Bernado </Text>
+                                    </View>
                                 </View>
                                 <TouchableHighlight 
                                     style={styles.botao}
@@ -81,12 +90,18 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         //backgroundColor: 'yellow'
     },
+    grade: {
+        flexDirection: 'row'
+    },
     infos: {
-        //backgroundColor: 'blue'
+        justifyContent: 'flex-start',
+        alignSelf: 'flex-start',
+        //backgroundColor: 'red'
     },
     nome: {
         padding: 10,
         justifyContent: 'center',
+        color: 'blue'
     },
     botao: {
         width: '65%',
