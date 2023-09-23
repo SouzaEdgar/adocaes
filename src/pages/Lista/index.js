@@ -14,27 +14,38 @@ export default function Lista({navigation}) {
                     return (
                         <View style={styles.card}>
                             <View style={styles.caixaNome}>
-                                <Text>
-                                    S/N
+                                <Text style={styles.nome}>
+                                    Juninho Ruindade Pura
                                 </Text>
-                                <Image style={{
-                                    width: 170, 
-                                    height: 170, 
+                                <View style={{
+                                    width: 180,
+                                    height: 180,
+                                    backgroundColor: '#ff5500',
                                     borderRadius: 20,
-                                }}
-                                    source={{uri:'https://cdn.discordapp.com/attachments/718876217293537333/1154969095972868138/6fb70c41-2626-4324-a6e5-d4b300b9a88f.png'}}/>
+                                }}>
+                                    <Image style={{
+                                        width: 170, 
+                                        height: 170, 
+                                        borderRadius: 20,
+                                        margin: 5,
+                                        position: 'relative'
+                                    }}
+                                        source={{uri:'https://cdn.discordapp.com/attachments/718876217293537333/1154969095972868138/6fb70c41-2626-4324-a6e5-d4b300b9a88f.png'}}
+                                    />
+                                </View>
+
                             </View>
                             <View style={styles.caixaInfo}>
                                 <View style={styles.infos}>
-                                    <Text>Idade: 4</Text>
+                                    <Text>Idade: 999</Text>
                                     <Text>Sexo: Macho</Text>
-                                    <Text>Local: Tua casa</Text>
+                                    <Text>Local: llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch e</Text>
                                 </View>
                                 <TouchableHighlight 
                                     style={styles.botao}
                                     onPress={() => navigation.navigate('SaberMais')}
                                 >
-                                    <Text>AOBA</Text>
+                                    <Text>SABER MAIS</Text>
                                 </TouchableHighlight>
                             </View>
                         </View>
@@ -52,27 +63,40 @@ const styles = StyleSheet.create({
     card: {
         width: '100%',
         flexDirection: 'row',
-        marginTop: 10,
-        marginBottom: 70,
+        //marginTop: 10,
+        marginBottom: 15,
         borderColor: '#000000',
        // borderBottomColor: '#000000'
     },
     caixaNome: {
+        width: '50%',
         alignItems: 'center',
         paddingHorizontal: 20,
+        //backgroundColor: 'orange'
     },
     caixaInfo: {
+        flex: 1,
+        width: '45%',
         justifyContent: 'flex-end',
-        paddingRight: 25,
+        alignSelf: 'flex-end',
+        //backgroundColor: 'yellow'
     },
     infos: {
-        marginBottom: 20,
-        margin: 10,
+        //backgroundColor: 'blue'
+    },
+    nome: {
+        padding: 10,
+        justifyContent: 'center',
     },
     botao: {
-        width: 60,
-        height: 60,
+        width: '65%',
+        height: 50,
+        marginVertical: '5%',
         position: 'relative',
-        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        borderRadius: 20,
+        backgroundColor: 'grey',
     }
 })
