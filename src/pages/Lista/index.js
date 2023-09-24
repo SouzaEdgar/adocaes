@@ -1,11 +1,33 @@
 import 'react-native-gesture-handler';
+import { useCallback } from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { StyleSheet } from "react-native";
 import { FlatList } from 'react-native-gesture-handler';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
+import { Roboto_100Thin, Roboto_700Bold } from '@expo-google-fonts/roboto';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Lista({navigation}) {
+    const [fontsLoaded] = useFonts({
+        //'Quicksand': require('./assets/fonts/Quicksand-Regular.ttf'),
+        Roboto_100Thin, Roboto_700Bold
+      });
+    
+      const onLayoutRootView = useCallback(async () => {
+        if (fontsLoaded) {
+          await SplashScreen.hideAsync();
+        }
+      }, [fontsLoaded]);
+    
+      if (!fontsLoaded) {
+        return null;
+      }
+
     return (
-        <View style={styles.container}>
+        <View style={styles.container} onLayout={onLayoutRootView}>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 data={[{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }]}
@@ -38,16 +60,16 @@ export default function Lista({navigation}) {
                             <View style={styles.caixaInfo}>
                                 <View style={styles.grade}>
                                     <View style={styles.infos}>
-                                        <Text style={{color: 'blue'}}>Idade: </Text>
-                                        <Text style={{color: 'blue'}}>Sexo: </Text>
-                                        <Text style={{color: 'blue'}}>Local: </Text>
+                                        <Text style={styles.infosTitulo}>idade: </Text>
+                                        <Text style={styles.infosTitulo}>Sexo: </Text>
+                                        <Text style={styles.infosTitulo}>Local: </Text>
                                     </View>
                                     <View style={{
                                         //backgroundColor: 'orange',
                                     }}>
-                                        <Text>18</Text>
-                                        <Text>Macho </Text>
-                                        <Text>Baeta - Sao Bernado </Text>
+                                        <Text style={styles.infosValor}>18</Text>
+                                        <Text style={styles.infosValor}>Macho </Text>
+                                        <Text style={styles.infosValor}>Baeta - Sao Bernado </Text>
                                     </View>
                                 </View>
                                 <TouchableHighlight 
@@ -98,10 +120,23 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         //backgroundColor: 'red'
     },
+    infosTitulo: {
+        paddingVertical: 8,
+        justifyContent: 'center',
+        color: 'blue',
+        fontFamily: 'Roboto_700Bold'
+    },
+    infosValor: {
+        paddingVertical: 8,
+        justifyContent: 'center',
+        color: 'black',
+        fontFamily: 'Roboto_700Bold'
+    },
     nome: {
         padding: 10,
         justifyContent: 'center',
-        color: 'blue'
+        color: 'blue',
+        fontFamily: 'Roboto_100Thin'
     },
     botao: {
         width: '65%',
