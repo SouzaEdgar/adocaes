@@ -6,14 +6,22 @@ import { FlatList } from 'react-native-gesture-handler';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
-import { Roboto_100Thin, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { 
+    Roboto_100Thin, 
+    Roboto_700Bold, 
+    Roboto_900Black,
+    Roboto_500Medium,
+} from '@expo-google-fonts/roboto';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function Lista({navigation}) {
     const [fontsLoaded] = useFonts({
         //'Quicksand': require('./assets/fonts/Quicksand-Regular.ttf'),
-        Roboto_100Thin, Roboto_700Bold
+        Roboto_100Thin, 
+        Roboto_700Bold,
+        Roboto_900Black,
+        Roboto_500Medium,
       });
     
       const onLayoutRootView = useCallback(async () => {
@@ -39,23 +47,16 @@ export default function Lista({navigation}) {
                                 <Text style={styles.nome}>
                                     Juninho Ruindade Pura
                                 </Text>
-                                <View style={{
-                                    width: 180,
-                                    height: 180,
-                                    backgroundColor: '#ff5500',
-                                    borderRadius: 20,
-                                }}>
-                                    <Image style={{
-                                        width: 170, 
+                                <View>
+                                    <Image style={[styles.imagem,{
+                                        width: 200, 
                                         height: 170, 
                                         borderRadius: 20,
-                                        margin: 5,
                                         position: 'relative'
-                                    }}
+                                    }]}
                                         source={{uri:'https://cdn.discordapp.com/attachments/718876217293537333/1154969095972868138/6fb70c41-2626-4324-a6e5-d4b300b9a88f.png'}}
                                     />
                                 </View>
-
                             </View>
                             <View style={styles.caixaInfo}>
                                 <View style={styles.grade}>
@@ -64,19 +65,17 @@ export default function Lista({navigation}) {
                                         <Text style={styles.infosTitulo}>Sexo: </Text>
                                         <Text style={styles.infosTitulo}>Local: </Text>
                                     </View>
-                                    <View style={{
-                                        //backgroundColor: 'orange',
-                                    }}>
+                                    <View style={styles.caixaValor}>
                                         <Text style={styles.infosValor}>18</Text>
                                         <Text style={styles.infosValor}>Macho </Text>
-                                        <Text style={styles.infosValor}>Baeta - Sao Bernado </Text>
+                                        <Text style={styles.infosValor}>Eita ferro nome grande - Sao Bernado do Campo</Text>
                                     </View>
                                 </View>
                                 <TouchableHighlight 
                                     style={styles.botao}
                                     onPress={() => navigation.navigate('SaberMais')}
                                 >
-                                    <Text>SABER MAIS</Text>
+                                    <Text style={styles.txtBotao}>SABER MAIS</Text>
                                 </TouchableHighlight>
                             </View>
                         </View>
@@ -107,46 +106,72 @@ const styles = StyleSheet.create({
     },
     caixaInfo: {
         flex: 1,
-        width: '45%',
+        //width: '45%',
+        width: '47%',
         justifyContent: 'flex-end',
         alignSelf: 'flex-end',
-        //backgroundColor: 'yellow'
+        //backgroundColor: 'yellow',
+    },
+    caixaValor: {
+        width: '70%',
+        justifyContent: 'center',
     },
     grade: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     infos: {
         justifyContent: 'flex-start',
         alignSelf: 'flex-start',
+        marginLeft: 5,
         //backgroundColor: 'red'
     },
     infosTitulo: {
-        paddingVertical: 8,
+        fontSize: 15,
+        paddingVertical: 5,
         justifyContent: 'center',
         color: 'blue',
-        fontFamily: 'Roboto_700Bold'
+        fontFamily: 'Roboto_500Medium',
     },
     infosValor: {
-        paddingVertical: 8,
+        fontSize: 15,
+        paddingVertical: 5,
         justifyContent: 'center',
         color: 'black',
-        fontFamily: 'Roboto_700Bold'
+        fontFamily: 'Roboto_500Medium',
+        //backgroundColor: 'purple',
     },
     nome: {
-        padding: 10,
+        width: '100%',
+        fontSize: 15,
+        padding: 5,
         justifyContent: 'center',
         color: 'blue',
-        fontFamily: 'Roboto_100Thin'
+        fontFamily: 'Roboto_900Black',
+        //backgroundColor: 'green'
+    },
+    imagem: {
+        borderColor: 'orange',
+        borderWidth: 3,
     },
     botao: {
         width: '65%',
-        height: 50,
-        marginVertical: '5%',
+        height: 30,
+        marginTop: '5%',
         position: 'relative',
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
-        borderRadius: 20,
-        backgroundColor: 'grey',
+        borderWidth: 2,
+        borderColor: 'blue',
+        borderRadius: 10,
+        backgroundColor: 'orange',
+
+    },
+    txtBotao: {
+        color: 'blue',
+        fontFamily: 'Roboto_500Medium',
+        textShadowColor: 'white',
+        textShadowOffset: {width: 0, height: 0},
+        textShadowRadius: 1,
     }
 })
