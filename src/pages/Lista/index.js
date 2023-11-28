@@ -1,10 +1,14 @@
 import 'react-native-gesture-handler';
-import { useCallback } from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
+import { useCallback, useState, useEffect } from 'react';
+import { View, Text, TouchableHighlight, Image, Pressable } from 'react-native';
 import { StyleSheet } from "react-native";
 import { FlatList } from 'react-native-gesture-handler';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+
+import { ref, onValue } from "firebase/database"
+import { db } from '../../config/firebaseconfig'
+
 
 import { 
     Roboto_100Thin, 
@@ -48,14 +52,17 @@ export default function Lista({navigation}) {
                                     Juninho Ruindade Pura
                                 </Text>
                                 <View>
-                                    <Image style={[styles.imagem,{
-                                        width: 200, 
-                                        height: 170, 
-                                        borderRadius: 20,
-                                        position: 'relative'
-                                    }]}
-                                        source={{uri:'https://cdn.discordapp.com/attachments/718876217293537333/1154969095972868138/6fb70c41-2626-4324-a6e5-d4b300b9a88f.png'}}
-                                    />
+                                    <Pressable onPress={() => readDAta()}>
+                                        <Image style={[styles.imagem,{
+                                            width: 200, 
+                                            height: 170, 
+                                            borderRadius: 20,
+                                            position: 'relative'
+                                        }]}
+                                            source={{uri:'https://cdn.discordapp.com/attachments/718876217293537333/1154969095972868138/6fb70c41-2626-4324-a6e5-d4b300b9a88f.png'}}
+                                        />
+                                    </Pressable>
+                                    
                                 </View>
                             </View>
                             <View style={styles.caixaInfo}>

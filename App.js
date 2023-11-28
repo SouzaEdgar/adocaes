@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Lista  from './src/pages/Lista';
 import SaberMais from './src/pages/SaberMais';
+import { FlatListComponent } from 'react-native';
 
 // Create Stack
 const Stack = createStackNavigator();
